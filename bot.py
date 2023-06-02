@@ -38,7 +38,6 @@ async def roleup(ctx):
         roles = user.roles # grab their roles
         print(f'DEBUG: @{user.id}\'s roles are: {user.roles}')
 
-    if class_selector_integer 
     await ctx.send(f'@{user.id}, you\'re officially poor. Sorry!')
     return
 
