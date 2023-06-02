@@ -32,13 +32,21 @@ async def testme(ctx):
 async def roleup(ctx):
     user = ctx.message.author
 
-    class_selector_integer = random.randint(1, 50)
+    class_selector_integer = random.randint(1, 10)
+    class_role = 0
 
-    if class_selector_integer in range(1, 16): # 30% chance to be poor
-        roles = user.roles # grab their roles
-        print(f'DEBUG: @{user.id}\'s roles are: {user.roles}')
+    if class_selector_integer in range(1, 4): # 30% chance to be poor
+        class_role = get(user.server.roles, id=1112870751415058532)
 
-    await ctx.send(f'@{user.id}, you\'re officially poor. Sorry!')
+    elif class_selector_integer in range(4, 8): # 40% chance to be middle class
+        class_role = get(user.server.roles, id=1112870797690802226)
+    else: # 30% chance to be upper class
+        class_role = get(user.server.roles, id=1112870829345218610)
+
+    # print(f'DEBUG: @{user.id}\'s roles are: {user.roles}')
+    await bot.add_roles(user, class_role)
+    print(f'DEBUG: {user.id} was assigned {class_role.name} <{class_role.id}> at {time.ctime(time.time())} (UTC)')
+
     return
 
 bot.run(token)
