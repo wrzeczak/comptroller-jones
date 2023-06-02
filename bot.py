@@ -1,15 +1,25 @@
 import discord
 from discord.ext import commands
 
+import time # for event logging 
+
 f = open("TOKEN", "r")
 token = f.read()
 
-bot = commands.Bot(command_prefix="!")
+intents = discord.Intents.default()
+intents.message_content = True
 
-@bot.event
-async def on_ready():
-    print("Bot Ready!")
+client = discord.Client(intents=intents)
 
-bot.run(token)
+@client.event
+async def on_ready()
+    print(f'{client.user} logged on at {time.ctime(time.time())} (UTC).')
 
-#commit test
+@client.event
+async def on_message(message):
+    if message.author == client.user: return
+
+    if message.content.startswith('&testme'):
+        await message.channel.send('Beep Boop.. Ready to regulate.. bloop bloop')
+
+client.run(token)
