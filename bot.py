@@ -12,7 +12,7 @@ intents.message_content = True
 client = discord.Client(intents=intents)
 
 @client.event
-async def on_ready()
+async def on_ready():
     print(f'{client.user} logged on at {time.ctime(time.time())} (UTC).')
 
 @client.event
