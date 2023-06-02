@@ -13,7 +13,7 @@ intents.message_content = True
 
 bot = commands.Bot(command_prefix="&", intents=intents)
 
-print("1")
+print("2")
 
 @bot.event
 async def on_ready():
@@ -46,7 +46,7 @@ async def roleup(ctx):
         class_role = ctx.message.guild.get_role(1112870829345218610)
 
     # print(f'DEBUG: @{user.id}\'s roles are: {user.roles}')
-    await bot.add_roles(user, class_role)
+    await user.add_roles([class_role])
     print(f'DEBUG: {user.id} was assigned {class_role.name} <{class_role.id}> at {time.ctime(time.time())} (UTC)')
 
     return
