@@ -13,6 +13,8 @@ intents.message_content = True
 
 bot = commands.Bot(command_prefix="&", intents=intents)
 
+print("1")
+
 @bot.event
 async def on_ready():
     print(f'{bot.user} logged on at {time.ctime(time.time())} (UTC).')
