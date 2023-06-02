@@ -9,17 +9,21 @@ token = f.read()
 intents = discord.Intents.default()
 intents.message_content = True
 
-client = discord.Client(intents=intents)
+bot = commands.Bot(command_prefix="&", intents=intents)
 
-@client.event
+@bot.event
 async def on_ready():
-    print(f'{client.user} logged on at {time.ctime(time.time())} (UTC).')
+    print(f'{bot.user} logged on at {time.ctime(time.time())} (UTC).')
 
-@client.event
+'''
+@bot.event
 async def on_message(message):
-    if message.author == client.user: return
+    if message.author == bot.user: return
+'''
 
-    if message.content.startswith('&testme'):
-        await message.channel.send('Beep Boop.. Ready to regulate.. bloop bloop')
+@bot.command()
+async def testme(ctx):
+    await ctx.send("Beep boop, the rats begin to chew the sheets, boop boop...")
+    return
 
-client.run(token)
+bot.run(token)
