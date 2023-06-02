@@ -36,12 +36,12 @@ async def roleup(ctx):
     class_role = 0
 
     if class_selector_integer in range(1, 4): # 30% chance to be poor
-        class_role = get(user.server.roles, id=1112870751415058532)
+        class_role = user.server.get_role(1112870751415058532)
 
     elif class_selector_integer in range(4, 8): # 40% chance to be middle class
-        class_role = get(user.server.roles, id=1112870797690802226)
+        class_role = user.server.get_role(1112870797690802226)
     else: # 30% chance to be upper class
-        class_role = get(user.server.roles, id=1112870829345218610)
+        class_role = user.server.get_role(1112870829345218610)
 
     # print(f'DEBUG: @{user.id}\'s roles are: {user.roles}')
     await bot.add_roles(user, class_role)
