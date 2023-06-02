@@ -1,2 +1,2 @@
-# comptroller-jones
-AGS City Project bot for assigning roles/onboarding
+# Comptroller Jones
+### *AGS City Project bot for assigning roles/onboarding*
