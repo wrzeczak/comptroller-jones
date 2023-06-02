@@ -26,4 +26,10 @@ async def testme(ctx):
     await ctx.send("Beep boop, the rats begin to chew the sheets, boop boop...")
     return
 
+@bot.command()
+async def roleup(ctx):
+    user = ctx.message.author
+    await ctx.send(f'@{user}, you\'re officially poor. Sorry!')
+    return
+
 bot.run(token)
