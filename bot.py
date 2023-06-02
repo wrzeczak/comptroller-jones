@@ -1,6 +1,8 @@
 import discord
 from discord.ext import commands
 
+import random
+
 import time # for event logging 
 
 f = open("TOKEN", "r")
@@ -29,7 +31,15 @@ async def testme(ctx):
 @bot.command()
 async def roleup(ctx):
     user = ctx.message.author
-    await ctx.send(f'@{user}, you\'re officially poor. Sorry!')
+
+    class_selector_integer = random.randint(1, 50)
+
+    if class_selector_integer in range(1, 16): # 30% chance to be poor
+        roles = user.roles # grab their roles
+        ctx.send(f'DEBUG: @{user.id}\'s roles are: {user.roles}')
+
+    if class_selector_integer 
+    await ctx.send(f'@{user.id}, you\'re officially poor. Sorry!')
     return
 
 bot.run(token)
