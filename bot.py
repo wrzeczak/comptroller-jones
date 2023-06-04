@@ -34,21 +34,21 @@ async def testme(ctx):
 async def roleup(ctx):
     user = ctx.message.author
 
-    class_selector_integer = random.randint(1, 10)
-    class_role = 0
+    class_roles = [ 1112870751415058532, 1112870797690802226, 1112870829345218610 ] # low, middle, high
+    class_weights = [ .3, .4, .3 ]
 
-    if class_selector_integer in range(1, 4): # 30% chance to be poor
-        class_role = ctx.message.guild.get_role(1112870751415058532)
+    class_role = ctx.message.guild.get_role(random.choices(class_roles, weights=class_weights))
 
-    elif class_selector_integer in range(4, 8): # 40% chance to be middle class
-        class_role = ctx.message.guild.get_role(1112870797690802226)
-    else: # 30% chance to be upper class
-        class_role = ctx.message.guild.get_role(1112870829345218610)
+    race_roles = [ 1114976043766403122, 1114976195528892597, 1114976121642045450 ] # purple, pink, green
+    race_weight = [ .45, .15, .4 ]
+
+    race_role = ctx.message.guild.get_role(random.choices(race_roles, weights=race_weight))
 
     # print(f'DEBUG: @{user.id}\'s roles are: {user.roles}')
-    await user.add_roles([class_role])
-    print(f'DEBUG: {user.id} was assigned {class_role.name} <{class_role.id}> at {time.ctime(time.time())} (UTC)')
+    await user.add_roles([class_role, race_role])
+    print(f'DEBUG: {user.id} was assigned {class_role.name}, {race_role.name} <{class_role.id}>, <{race_role.id}> at {time.ctime(time.time())} (UTC)')
 
+    await ctx.send(f"Assigned class {class_role.name} and race {race_role.name}... many such cases...")
     return
 
 bot.run(token)
